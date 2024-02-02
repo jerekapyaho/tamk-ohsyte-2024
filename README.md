@@ -38,3 +38,31 @@ Javan standardikirjastoissa käytetään rajapintoja erittäin paljon,
 kts. esim. `java.util.Comparable`. Myös graafisen käyttöliittymän
 ohjelmoinnissa käytetään rajapintoja paljon tapahtumankäsittelijöissä
 (esim. JavaFX-kirjaston ChangeListener).
+
+### Geneeriset tyypit
+
+Javassa yleisimmin käytetyt tietorakenteet on määritelty pakkauksessa
+`java.util`. Ne perustuvat geneerisyyteen, eli esimerkiksi listan
+sisältämien alkioiden tyyppi annetaan geneerisenä parametrina:
+
+    List<Event> events = new ArrayList<>();
+
+Tietorakenteet on määritelty rajapintoina, eli esimerkiksi `List`-rajapinnasta
+ei voi tehdä konkreettista toteutusta, vaan käytetään `ArrayList`-luokkaa,
+joka toteuttaa `List<T>`-rajapinnan (tai jotain muuta vastaavaa luokkaa).
+
+Ohjenuora: "program to the interface, not to the implementation"
+
+Kun käytetään rajapintaa tietotyyppinä, konkreettista toteutusta on helppo
+vaihtaa tarvittaessa.
+
+### Singleton-suunnittelumalli
+
+Singleton tarkoittaa luokkaa, josta voi olla olemassa vain yksi olio koko
+ohjelmassa. Tämä saadaan aikaan piilottamalla luokan rakentaja, tekemällä
+luokan sisäinen staattinen olio siitä itsestään, ja palauttamalla pyydettäessä
+viite tähän sisäiseen olioon. Sen pitää olla `final`, jotta viitteen saaja
+ei pysty muuttamaan sitä.
+
+Tässä repositoriossa `java/Generics/EventManager.java` on esimerkki
+singleton-suunnittelumallin käytöstä.
