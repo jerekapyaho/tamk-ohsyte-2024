@@ -66,3 +66,17 @@ ei pysty muuttamaan sitä.
 
 Tässä repositoriossa `java/Generics/EventManager.java` on esimerkki
 singleton-suunnittelumallin käytöstä.
+
+### Strategy-suunnittelumalli
+
+Strategy-suunnittelumallin avulla on helppo vaihtaa toteutusta tarpeen
+mukaan. Strategioille määritellään yhteinen rajapinta, ja sitten tehdään
+yksi tai useampia luokkia, jotka toteuttavat rajapinnan. Toteutusluokka
+voidaan antaa käyttäjälle joko rakentajan parametrina tai erillisellä
+setterillä. Parametrin tyyppinä käytetään määriteltyä rajapintaa, ei mitään
+konkreettista luokkaa. Käyttäjä ei tiedä eikä välitä miten strategia on
+toteutettu, vaan käyttää sitä tunnetun rajapinnan kautta.
+
+Tässä repositoriossa `java/Strategy/EventManager.java` sekä rajapinta
+`EventProvider` ja sen toteuttavat luokat ovat esimerkki strategy-suunnittelumallin
+käytöstä.
