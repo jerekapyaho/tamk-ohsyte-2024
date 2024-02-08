@@ -80,3 +80,30 @@ toteutettu, vaan käyttää sitä tunnetun rajapinnan kautta.
 Tässä repositoriossa `java/Strategy/EventManager.java` sekä rajapinta
 `EventProvider` ja sen toteuttavat luokat ovat esimerkki strategy-suunnittelumallin
 käytöstä.
+
+### Graafisen käyttöliittymän ohjelmointi JavaFX:llä
+
+[JavaFX](https://openjfx.io/) on graafisen käyttöliittymän eli GUI:n ohjelmoimiseen 
+tehty kirjasto.
+
+Hakemistossa `java/Strategy` on JavaFX-ohjelma, jolla voi lisätä tapahtumia.
+Se käyttää `EventManager`-luokkaa.
+
+Aseta ensin JavaFX:n kotisivuilta löytyvän aloitusohjeen mukaan ympäristömuuttuja,
+joka kertoo mistä hakemistosta JavaFX-luokat löytyvät. Sekä Java-kääntäjä että
+ajojärjestelmä tarvitsevat tämän tiedon. Linuxissa tämän voi tehdä joko oman
+shellin asetuksissa pysyvästi, tai terminaali-ikkunan elinajan verran esimerkiksi näin:
+
+    export JAVAFX_HOME=~/javafx-sdk-21.0.2/lib
+
+Tämä asettaa arvoksi kotihakemistossa olevan, ladatun JavaFX-version mukaisen hakemiston
+ja sen sisällä `lib`-hakemiston.
+
+Ohjelman kääntäminen:
+
+    javac --module-path $JAVAFX_HOME --add-modules javafx.controls App.java
+
+Ohjelman ajaminen:
+
+    java --module-path $JAVAFX_HOME --add-modules javafx.controls App
+

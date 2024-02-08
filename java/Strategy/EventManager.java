@@ -1,4 +1,8 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Event manager. Implemented as a singleton.
@@ -11,6 +15,10 @@ public class EventManager {
     }
 
     private EventProvider eventProvider;
+
+    public void setEventProvider(EventProvider provider) {
+        this.eventProvider = provider;
+    }
 
     // Private instance, statically created.
     private static final EventManager INSTANCE = new EventManager();
@@ -27,5 +35,25 @@ public class EventManager {
 
     public List<Event> getEvents() {
         return this.eventProvider.getEvents();
+    }
+
+    /**
+     * Gets a sorted list of all the categories across all events.
+     *
+     * @return the category list
+     */
+    public List<String> getCategories() {
+        // Each category string may be added to the set
+        // multiple times, but there will be only one of each.
+        Set<String> categories = new HashSet<String>();
+        for (Event event: this.getEvents()) {
+            categories.add(event.getCategory().getValue());
+        }
+
+        // Create a new list based on the set of categories,
+        // then sort it.
+        List<String> result = new ArrayList<String>(categories);
+        Collections.sort(result);
+        return result;
     }
 }
