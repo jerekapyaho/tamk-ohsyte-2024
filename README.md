@@ -107,3 +107,13 @@ Ohjelman ajaminen:
 
     java --module-path $JAVAFX_HOME --add-modules javafx.controls App
 
+## C# ja .NET
+
+Tutustutaan .NET-alustaan ja C#-ohjelmointikieleen.
+
+### Luokan ominaisuudet
+
+C#:ssa käytetään ominaisuuksia (engl. properties), jotka vastaavat
+Javan get- ja set-metodeilla asetettavia tietojäseniä, mutta ovat
+C#-kielen ominaisuus.
+
