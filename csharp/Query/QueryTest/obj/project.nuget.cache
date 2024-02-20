@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "g7QTBZCrq2n7jSaw5FYHBGxvlqXivlhUsC2bHXg9ONexCXayYfbZK3oe0n1arS6d8QrRayKyaD3E50F5sjYowg==",
+  "success": true,
+  "projectFilePath": "/home/jere/tamk-ohsyte-2024/csharp/Query/QueryTest/QueryTest.csproj",
+  "expectedPackageFiles": [
+    "/home/jere/.nuget/packages/csvhelper/31.0.0/csvhelper.31.0.0.nupkg.sha512",
+    "/home/jere/.nuget/packages/system.linq.async/4.0.0/system.linq.async.4.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
