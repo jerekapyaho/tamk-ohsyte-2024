@@ -25,3 +25,9 @@ replay_pid*
 
 # Visual Studio Code settings
 .vscode/
+
+# VSCode generated solution
+*.sln
+
+bin/
+obj/
