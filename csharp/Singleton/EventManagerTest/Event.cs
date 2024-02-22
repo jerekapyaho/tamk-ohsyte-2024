@@ -63,6 +63,13 @@ public class Event: IComparable {
     public Category Category { get; set; }
     public DateOnly Date { get; set; }
 
+    public Event()
+    {
+        // No-argument constructor needed for CsvHelper.
+        // The properties get their default values, but they
+        // will be overridden as the CSV rows are read.
+    }
+
     public Event(DateOnly date, Description description, Category category)
     {
         this.Date = date;

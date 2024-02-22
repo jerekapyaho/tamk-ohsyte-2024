@@ -1,5 +1,6 @@
 using System.Globalization;
 using CsvHelper;
+using CsvHelper.Configuration;
 
 public sealed class EventManager
 {
@@ -50,38 +51,23 @@ public sealed class EventManager
         // temporary list first, then clear the old list and copy the
         // new ones over only if the read is successful.
 
-        using (var reader = new StreamReader(EventsPath))
-        using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+        var config = new CsvConfiguration(CultureInfo.InvariantCulture)
         {
+            HasHeaderRecord = true,
+            PrepareHeaderForMatch = args => args.Header.ToLower()
+        };
+
+        using (var reader = new StreamReader(EventsPath))
+        using (var csv = new CsvReader(reader, config))
+        {
+            csv.Context.RegisterClassMap<EventMap>();
+
             csv.Read();
             csv.ReadHeader();
-            while (csv.Read())
+
+            var allEvents = csv.GetRecords<Event>().ToList();
+            foreach (var e in allEvents)
             {
-                var dateField = csv.GetField("date");
-                DateOnly date;
-                if (!DateOnly.TryParse(dateField, out date))
-                {
-                    Console.Error.WriteLine($"bad date: {dateField}, ignoring event");
-                    continue;
-                }
-
-                var descriptionField = csv.GetField("description");
-
-                var categoryField = csv.GetField("category");
-                var categoryParts = categoryField.Split("/");
-                var primary = categoryParts[0];
-                var secondary = string.Empty;
-                if (categoryParts.Length > 1)
-                {
-                    secondary = categoryParts[1];
-                }
-
-                var e = new Event(
-                    date,
-                    new Description(descriptionField),
-                    new Category(primary, secondary)
-                );
-
                 this._events.Add(e);
             }
         }
